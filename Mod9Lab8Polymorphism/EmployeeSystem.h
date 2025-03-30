@@ -22,16 +22,20 @@ service (which may then retain a copy of this assignment on its
 database for the purpose of future plagiarism checking)
 */
 
+#ifndef EMPLOYEE_SYSTEM_H_
+#define EMPLOYEE_SYSTEM_H_
+
 #include <string>
 using namespace std;
 
 class Employee {
 public:
 	Employee();
+	Employee(string name, string ssn);
 	virtual ~Employee();
-	virtual double calculateSalary();
+	virtual double calculateSalary() const = 0;
 	virtual void displayInfo();
-	static int getEmployeeCount();
+	int getEmployeeCount();
 private:
 	string name, ssn;
 	static int employeeCount;
@@ -40,7 +44,8 @@ private:
 class FullTimeEmployee : public Employee {
 public:
 	FullTimeEmployee();
-	double calculateSalary();
+	FullTimeEmployee(string, string, double);
+	double calculateSalary() const override;
 	void displayInfo();
 private:
 	double monthlySalary;
@@ -49,7 +54,8 @@ private:
 class PartTimeEmployee : public Employee {
 public:
 	PartTimeEmployee();
-	double calculateSalary();
+	PartTimeEmployee(string, string, double, int);
+	double calculateSalary() const override;
 	void displayInfo();
 private:
 	double hourlyRate;
@@ -59,9 +65,12 @@ private:
 class ContractEmployee : public Employee {
 public:
 	ContractEmployee();
-	double calculateSalary();
+	ContractEmployee(string, string, double, int);
+	double calculateSalary() const override;
 	void displayInfo();
 private:
 	double contractAmount;
 	int contractDurationMonths;
 };
+
+#endif // !EMPLOYEE_SYSTEM_H_
