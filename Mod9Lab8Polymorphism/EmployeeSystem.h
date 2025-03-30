@@ -27,7 +27,7 @@ using namespace std;
 
 class Employee {
 public:
-	Employee(int name, int ssn);
+	Employee();
 	virtual ~Employee();
 	virtual double calculateSalary();
 	virtual void displayInfo();

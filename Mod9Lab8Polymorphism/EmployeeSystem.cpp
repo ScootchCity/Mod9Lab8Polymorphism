@@ -24,6 +24,7 @@ database for the purpose of future plagiarism checking)
 
 #include <string>
 #include <iostream>
+#include "EmployeeSystem.h"
 using namespace std;
 
 class Employee {
@@ -31,16 +32,16 @@ public:
 	Employee() {
 		name = "NONE";
 		ssn = "NONE";
+		employeeCount++;
+		//cout << "EMPLOYEE BASE\n";
 	}
 	Employee(string name, string ssn) {
 		this->name = name;
 		this->ssn = ssn;
-	}
-	virtual ~Employee() {
-		this->name = name;
-		this->ssn = ssn;
 		employeeCount++;
+		//cout << "EMPLOYEE PERAM\n";
 	}
+	virtual ~Employee() {}
 	virtual double calculateSalary() const = 0;
 	virtual void displayInfo() {
 		cout << "Name: " << name << endl;
@@ -56,11 +57,16 @@ private:
 
 class FullTimeEmployee : public Employee {
 public:
-	FullTimeEmployee() {
+	/*
+		FullTimeEmployee() {
 		monthlySalary = 0;
+		//cout << "FULL-TIME BASE\n";
 	}
+	*/
+
 	FullTimeEmployee(string name, string ssn, double monthlySalary) : Employee(name, ssn) {
 		this->monthlySalary = monthlySalary;
+		//cout << "FULL-TIME PERAM\n";
 	}
 	double calculateSalary() { return monthlySalary; }
 	void displayInfo() {
@@ -78,10 +84,12 @@ public:
 	PartTimeEmployee() {
 		hourlyRate = 0;
 		hoursWorked = 0;
+		//cout << "PART-TIME BASE\n";
 	}
 	PartTimeEmployee(string name, string ssn, double hourlyRate, int hoursWorked) : Employee(name, ssn) {
 		this->hourlyRate = hourlyRate;
 		this->hoursWorked = hoursWorked;
+		//cout << "PART-TIME PERAM\n";
 	}
 	double calculateSalary() { return hourlyRate * hoursWorked; }
 	void displayInfo() {
@@ -101,10 +109,12 @@ public:
 	ContractEmployee() {
 		contractAmount = 0;
 		contractDurationMonths = 0;
+		//cout << "CONTRACT BASE\n";
 	}
 	ContractEmployee(string name, string ssn, double contractAmount, int contractDurationMonths) : Employee(name, ssn) {
 		this->contractAmount = contractAmount;
 		this->contractDurationMonths = contractDurationMonths;
+		//cout << "CONTRACT PERAM\n";
 	}
 	double calculateSalary() { return contractAmount / contractDurationMonths; }
 	void displayInfo() {
@@ -118,6 +128,3 @@ private:
 	double contractAmount;
 	int contractDurationMonths;
 };
-
-//ADD CONTRACT EMPLOYEE
-//FINISH DISPLAYINFO FOR ALL DERIVED
