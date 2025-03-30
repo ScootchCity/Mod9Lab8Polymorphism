@@ -32,7 +32,10 @@ public:
 		name = "NONE";
 		ssn = "NONE";
 	}
-	Employee(string name, string ssn);
+	Employee(string name, string ssn) {
+		this->name = name;
+		this->ssn = ssn;
+	}
 	virtual ~Employee() {
 		this->name = name;
 		this->ssn = ssn;
@@ -56,14 +59,15 @@ public:
 	FullTimeEmployee() {
 		monthlySalary = 0;
 	}
-	FullTimeEmployee(string name, string ssn, double hourlyRate) : Employee(name, ssn) {
+	FullTimeEmployee(string name, string ssn, double monthlySalary) : Employee(name, ssn) {
 		this->monthlySalary = monthlySalary;
 	}
 	double calculateSalary() { return monthlySalary; }
 	void displayInfo() {
 		Employee::displayInfo();
 		cout << "Type: Full-Time\n";
-		cout << 
+		cout << "Monthly Salary: $" << monthlySalary << endl;
+		cout << "Calculated Salary: $" << calculateSalary() << endl;
 	}
 private:
 	double monthlySalary;
@@ -82,10 +86,37 @@ public:
 	double calculateSalary() { return hourlyRate * hoursWorked; }
 	void displayInfo() {
 		Employee::displayInfo();
+		cout << "Type: Part-Time\n";
+		cout << "Hourly Rate: $" << hourlyRate << endl;
+		cout << "Hours Worked: " << hoursWorked << endl;
+		cout << "Calculated Salary: $" << calculateSalary() << endl;
 	}
 private:
 	double hourlyRate;
 	int hoursWorked;
+};
+
+class ContractEmployee : public Employee {
+public:
+	ContractEmployee() {
+		contractAmount = 0;
+		contractDurationMonths = 0;
+	}
+	ContractEmployee(string name, string ssn, double contractAmount, int contractDurationMonths) : Employee(name, ssn) {
+		this->contractAmount = contractAmount;
+		this->contractDurationMonths = contractDurationMonths;
+	}
+	double calculateSalary() { return contractAmount / contractDurationMonths; }
+	void displayInfo() {
+		Employee::displayInfo();
+		cout << "Type: Contract\n";
+		cout << "Contract Amount: $" << contractAmount << endl;
+		cout << "Contract Duration: " << contractDurationMonths << endl;
+		cout << "Calculated Salary: $" << calculateSalary() << endl;
+	}
+private:
+	double contractAmount;
+	int contractDurationMonths;
 };
 
 //ADD CONTRACT EMPLOYEE

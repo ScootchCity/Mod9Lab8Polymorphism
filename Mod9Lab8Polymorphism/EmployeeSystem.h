@@ -55,3 +55,13 @@ private:
 	double hourlyRate;
 	int hoursWorked;
 };
+
+class ContractEmployee : public Employee {
+public:
+	ContractEmployee();
+	double calculateSalary();
+	void displayInfo();
+private:
+	double contractAmount;
+	int contractDurationMonths;
+};
