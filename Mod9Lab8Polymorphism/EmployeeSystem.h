@@ -35,7 +35,7 @@ public:
 	virtual ~Employee();
 	virtual double calculateSalary() const = 0;
 	virtual void displayInfo();
-	int getEmployeeCount();
+	static int getEmployeeCount();
 private:
 	string name, ssn;
 	static int employeeCount;

@@ -27,36 +27,7 @@ database for the purpose of future plagiarism checking)
 #include "EmployeeSystem.h"
 using namespace std;
 
-/*
-class Employee {
-public:
-	Employee() {
-		name = "NONE";
-		ssn = "NONE";
-		employeeCount++;
-		//cout << "EMPLOYEE BASE\n";
-	}
-	Employee(string name, string ssn) {
-		this->name = name;
-		this->ssn = ssn;
-		employeeCount++;
-		//cout << "EMPLOYEE PERAM\n";
-	}
-	virtual ~Employee() {}
-	virtual double calculateSalary() const = 0;
-	virtual void displayInfo() {
-		cout << "Name: " << name << endl;
-		cout << "SSN: " << ssn << endl;
-	}
-	static int getEmployeeCount() {
-		return employeeCount;
-	}
-private:
-	string name, ssn;
-	static int employeeCount;
-};
-*/
-
+//EMPLOYEE
 Employee::Employee() {
 	name = "NONE";
 	ssn = "NONE";
@@ -80,30 +51,7 @@ int Employee::getEmployeeCount() {
 }
 int Employee::employeeCount = 0;
 
-/*
-class FullTimeEmployee : public Employee {
-public:
-	FullTimeEmployee() {
-		monthlySalary = 0;
-		//cout << "FULL-TIME BASE\n";
-	}
-
-	FullTimeEmployee(string name, string ssn, double monthlySalary) : Employee(name, ssn) {
-		this->monthlySalary = monthlySalary;
-		//cout << "FULL-TIME PERAM\n";
-	}
-	double calculateSalary() { return monthlySalary; }
-	void displayInfo() {
-		Employee::displayInfo();
-		cout << "Type: Full-Time\n";
-		cout << "Monthly Salary: $" << monthlySalary << endl;
-		cout << "Calculated Salary: $" << calculateSalary() << endl;
-	}
-private:
-	double monthlySalary;
-};
-*/
-
+//FULL TIME
 FullTimeEmployee::FullTimeEmployee() {
 	monthlySalary = 0;
 	//cout << "FULL-TIME BASE\n";
@@ -120,33 +68,7 @@ void FullTimeEmployee::displayInfo() {
 	cout << "Calculated Salary: $" << calculateSalary() << endl;
 }
 
-/*
-class PartTimeEmployee : public Employee {
-public:
-	PartTimeEmployee() {
-		hourlyRate = 0;
-		hoursWorked = 0;
-		//cout << "PART-TIME BASE\n";
-	}
-	PartTimeEmployee(string name, string ssn, double hourlyRate, int hoursWorked) : Employee(name, ssn) {
-		this->hourlyRate = hourlyRate;
-		this->hoursWorked = hoursWorked;
-		//cout << "PART-TIME PERAM\n";
-	}
-	double calculateSalary() { return hourlyRate * hoursWorked; }
-	void displayInfo() {
-		Employee::displayInfo();
-		cout << "Type: Part-Time\n";
-		cout << "Hourly Rate: $" << hourlyRate << endl;
-		cout << "Hours Worked: " << hoursWorked << endl;
-		cout << "Calculated Salary: $" << calculateSalary() << endl;
-	}
-private:
-	double hourlyRate;
-	int hoursWorked;
-};
-*/
-
+//PART TIME
 PartTimeEmployee::PartTimeEmployee() {
 	hourlyRate = 0;
 	hoursWorked = 0;
@@ -166,33 +88,7 @@ void PartTimeEmployee::displayInfo() {
 	cout << "Calculated Salary: $" << calculateSalary() << endl;
 }
 
-/*
-class ContractEmployee : public Employee {
-public:
-	ContractEmployee() {
-		contractAmount = 0;
-		contractDurationMonths = 0;
-		//cout << "CONTRACT BASE\n";
-	}
-	ContractEmployee(string name, string ssn, double contractAmount, int contractDurationMonths) : Employee(name, ssn) {
-		this->contractAmount = contractAmount;
-		this->contractDurationMonths = contractDurationMonths;
-		//cout << "CONTRACT PERAM\n";
-	}
-	double calculateSalary() const { return contractAmount / contractDurationMonths; }
-	void displayInfo() {
-		Employee::displayInfo();
-		cout << "Type: Contract\n";
-		cout << "Contract Amount: $" << contractAmount << endl;
-		cout << "Contract Duration: " << contractDurationMonths << endl;
-		cout << "Calculated Salary: $" << calculateSalary() << endl;
-	}
-private:
-	double contractAmount;
-	int contractDurationMonths;
-};
-*/
-
+//CONTRACT
 ContractEmployee::ContractEmployee() {
 	contractAmount = 0;
 	contractDurationMonths = 0;
